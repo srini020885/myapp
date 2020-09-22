@@ -25,4 +25,11 @@ node {
           }
       }   
 	
+	stage('Deploy to Tomcat'){
+      
+      sshagent(['root']) {
+         sh 'scp -o StrictHostKeyChecking=no target/myweb-0.0.7-SNAPSHOT.war root@192.168.56.111:/opt/jenkins-app/'
+      }
+   }
+	
 }
